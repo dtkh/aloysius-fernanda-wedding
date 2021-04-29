@@ -30,9 +30,9 @@
   left: -18px;
   top: -5px;
   content: url('../img/music.svg');
-  border: 8px solid rgba(255, 255, 255, 1);
+  border: 8px solid gold;
   border-radius: 500%;
-  background: #fff;
+  background: gold;
   height: 20px;
   width: 20px;
   transition: all 500ms ease-in-out;
