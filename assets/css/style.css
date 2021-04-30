@@ -20,7 +20,7 @@ main {
 
 .container {
   max-width: 1140px;
-  padding: 0 20px;
+  padding: 80px 20px;
   margin: 0 auto;
 }
 
@@ -84,7 +84,7 @@ header #nav ul li a:hover:after {
   letter-spacing: 20px;
   font-size: 3rem;
   text-align: center;
-  color: gold;
+  color: #d4af37;
   text-shadow: 1px 1px 1px #333;
 }
 
