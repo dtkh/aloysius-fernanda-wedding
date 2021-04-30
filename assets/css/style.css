@@ -76,21 +76,29 @@ header #nav ul li a:hover:after {
 #hero {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 #hero h1 {
-  letter-spacing: 20px;
   font-size: 3rem;
   text-align: center;
   color: #d4af37;
   text-shadow: 1px 1px 1px #333;
+  font-family: 'Great Vibes', cursive;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
-#hero h1.mobile {
-  display: none;
-  font-size: 2.5rem;
+#hero h3 {
+  letter-spacing: 5px;
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  font-weight: 400;
 }
 
 #hero-img {
@@ -114,7 +122,6 @@ header #nav ul li a:hover:after {
 }
 
 .section-heading {
-  letter-spacing: -1.1px;
   font-size: 4rem;
   text-align: center;
   font-family: 'Great Vibes', cursive;
@@ -184,12 +191,7 @@ section {
   text-align: center;
 }
 
-@media screen and (max-width: 425px) {
-  #hero h1.mobile {
-    font-size: 2rem;
-    letter-spacing: 10px;
-  }
-
+@media screen and (max-width: 424px) {
   header #nav ul li {
     margin: 0 10px;
   }
@@ -199,13 +201,14 @@ section {
   }
 }
 
-@media screen and (max-width: 768px) {
-  #hero h1.desktop {
-    display: none;
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  #hero h1 {
+    font-size: 4rem;
   }
 
-  #hero h1.mobile {
-    display: block;
+  #hero h3 {
+    font-size: 2rem;
+    letter-spacing: 10px;
   }
 
   #details > .container > div {
@@ -213,8 +216,24 @@ section {
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  #details iframe {
-    width: 450px;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #hero h1 {
+    font-size: 6rem;
+  }
+
+  #hero h3 {
+    font-size: 2.5rem;
+    letter-spacing: 15px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #hero h1 {
+    font-size: 6rem;
+  }
+
+  #hero h3 {
+    font-size: 2.5rem;
+    letter-spacing: 15px;
   }
 }
