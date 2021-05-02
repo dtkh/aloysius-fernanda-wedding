@@ -73,6 +73,14 @@ header #nav ul li a:hover:after {
   transition: all .2s ease-in-out;
 }
 
+h1.section-heading {
+  font-size: 4rem;
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  padding: 40px 0;
+  margin: 0;
+}
+
 #hero {
   height: 100vh;
   display: flex;
@@ -81,14 +89,26 @@ header #nav ul li a:hover:after {
   justify-content: center;
 }
 
-#hero h1 {
+#hero h1, .section-heading {
   font-size: 3rem;
   text-align: center;
-  color: #d4af37;
-  text-shadow: 1px 1px 1px #333;
   font-family: 'Great Vibes', cursive;
-  padding-bottom: 0;
+  background: -webkit-linear-gradient(
+    #9a5916,
+        #e4b04d,
+        #fff1a3,
+        #e7b14f,
+        #ae6f27,
+        #f8c65d
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important;
+  filter: drop-shadow(2px 2px #333);
+  padding: 10px 0;
   margin-bottom: 0;
+  width: 100%;
 }
 
 #hero h3 {
@@ -121,14 +141,6 @@ header #nav ul li a:hover:after {
   background: rgba(255,232,244,0.7);
 }
 
-.section-heading {
-  font-size: 4rem;
-  text-align: center;
-  font-family: 'Great Vibes', cursive;
-  padding: 40px 0;
-  margin: 0;
-}
-
 .gmap-responsive{
   overflow:hidden;
   padding-bottom:56.25%;
@@ -146,6 +158,11 @@ header #nav ul li a:hover:after {
 
 section {
   position: relative;
+}
+
+#details {
+  background: #0F52BA; 
+  color: #eeeeee; 
 }
 
 #schedule-img {

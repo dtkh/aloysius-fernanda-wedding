@@ -16,7 +16,7 @@
   margin: auto;
   margin: 0;
   min-height: 50px;
-  border-left: 1px dashed goldenrod;
+  border-left: 1px dashed #d4af37;
   padding: 0 0 40px 40px;
   position: relative;
 }
@@ -30,9 +30,9 @@
   left: -18px;
   top: -5px;
   content: url('../img/music.svg');
-  border: 8px solid #d4af37;
+  border: 8px solid gold;
   border-radius: 500%;
-  background: #d4af37;
+  background: gold;
   height: 20px;
   width: 20px;
   transition: all 500ms ease-in-out;
