@@ -316,17 +316,18 @@ l41 -44 74 0 c69 0 81 3 134 36 59 36 99 79 99 108 0 26 -34 18 -66 -15 -56
   <main>
 
     <section id="hero">
-      <div id="hero-img">
-        <div id="hero-overlay"></div>
-      </div>
+      <div id="hero-overlay"></div>
+      <video playsinline autoplay muted loop id="hero-vid">
+        <source src="assets/img/hero_video.mp4" type="video/mp4">
+      </video>
 
       <h1 class="test">Save the Date</h1>
-      <h3>21&middot;08&middot;2021</h3>
+      <h3>21st AUG 2021</h3>
     </section>
 
     <section id="milestones">
       <div class="container">
-        <h1 class="section-heading" style="text-shadow: 2px 2px #ccc;">Moments</h1>
+        <h1 class="section-heading">Moments</h1>
 
         <div class="rightbox">
           <div class="rb-container">
@@ -386,7 +387,7 @@ l41 -44 74 0 c69 0 81 3 134 36 59 36 99 79 99 108 0 26 -34 18 -66 -15 -56
 
     <section id="details">
       <div class="container">
-        <h1 class="section-heading" style="text-shadow: 2px 2px #333;">Details</h1>
+        <h1 class="section-heading">Details</h1>
         <div style="display: flex; justify-content: center;">
           <div style="flex-basis: 50%;">
             <div id="details-address" style="margin-bottom: 10px;">
@@ -458,12 +459,12 @@ l41 -44 74 0 c69 0 81 3 134 36 59 36 99 79 99 108 0 26 -34 18 -66 -15 -56
         <div id="schedule-overlay"></div>
       </div>
       <div class="container">
-        <h1 class="section-heading" style="text-shadow: 2px 2px #ccc;">Schedule</h1>
+        <h1 class="section-heading">Schedule</h1>
         <div id="schedule-details">
           <p><strong>10:00am</strong></p>
-          <p>Group A to be seated</p>
+          <p>Group A* to be seated</p>
           <p><strong>10:30am</strong></p>
-          <p>Group B to be seated</p>
+          <p>Group B* to be seated</p>
           <p><strong>11:00am</strong></p>
           <p>Matrimony Mass commencement</p>
           <p><strong>12:00 noon</strong></p>
@@ -471,12 +472,29 @@ l41 -44 74 0 c69 0 81 3 134 36 59 36 99 79 99 108 0 26 -34 18 -66 -15 -56
           <a href="http://crossingscafe.com.sg/" target="_blank">
             <img
               src="https://images.squarespace-cdn.com/content/56f01ef060b5e94cac4d8976/1545967232954-I5S3JWT7KEXIM89RL71C/logo-for-social-media.jpg"
-              width="120">
+              width="120" style="border-radius: 50%;">
           </a>
+
+          <div
+            style="text-align: center; margin-top: 20px; padding: 20px; border: 1px dashed; background: rgba(255,255,255,0.7);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-alert-circle">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+            <ul style="text-align: start; line-height: 1.8;">
+              <li>*Guests will be notified of their groups closer to the actual date.</li>
+              <li>Please note not to mingle across the different groups.</li>
+              <li>Please keep your mask on at all times.</li>
+              <li>Please do not consume food and drinks within the church compound.</li>
+              <li>Read more on the church's regulations <a href="assets/docs/Marriage Solemnizations rev5.pdf"
+                  target="_blank" style="color: #0F52BA; font-weight: 500;">here</a>.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <script type="text/javascript" src="assets/js/app.js"></script>

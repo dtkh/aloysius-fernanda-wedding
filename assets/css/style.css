@@ -20,7 +20,7 @@ main {
 
 .container {
   max-width: 1140px;
-  padding: 80px 20px;
+  padding: 90px 20px;
   margin: 0 auto;
 }
 
@@ -34,7 +34,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,232,244,0.7);
+  background: rgba(255,255,255,0.7);
 }
 
 header #nav ul {
@@ -68,8 +68,8 @@ header #nav ul li a:hover:after {
 }
 
 #logo > svg {
-  max-width: 120px;
-  min-width: 120px;
+  max-width: 240px;
+  min-width: 240px;
   transition: all .2s ease-in-out;
 }
 
@@ -106,7 +106,7 @@ h1.section-heading {
   -webkit-text-fill-color: transparent;
   text-shadow: none !important;
   filter: drop-shadow(2px 2px #333);
-  padding: 10px 0;
+  padding: 10px 20px 0 0;
   margin-bottom: 0;
   width: 100%;
 }
@@ -135,10 +135,24 @@ h1.section-heading {
   height: 100vh;
 }
 
+#hero-vid {
+  z-index: -2;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #hero-overlay {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
-  background: rgba(255,232,244,0.7);
+  background: rgba(255,255,255,0.7);
 }
 
 .gmap-responsive{
@@ -161,8 +175,8 @@ section {
 }
 
 #details {
-  background: #0F52BA; 
-  color: #eeeeee; 
+  background: rgb(0, 103, 164); 
+  color: #fff;
 }
 
 #schedule-img {
@@ -182,7 +196,7 @@ section {
 #schedule-overlay {
   height: 100%;
   width: 100%;
-  background: rgba(255,232,244,0.7);
+  background: rgba(255,255,255,0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -195,16 +209,16 @@ section {
   justify-content: center;
 }
 
-#schedule-details p:nth-child(odd) {
+#schedule-details > p:nth-child(odd) {
   margin-bottom: 5px;
 }
 
-#schedule-details p:nth-child(even) {
+#schedule-details > p:nth-child(even) {
   margin-top: 5px;
   margin-bottom: 20px;
 }
 
-#schedule-details p {
+#schedule-details > p {
   text-align: center;
 }
 
