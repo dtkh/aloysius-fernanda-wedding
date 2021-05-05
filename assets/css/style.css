@@ -1,7 +1,26 @@
+:root {
+  --primary-color: #0067a4;
+}
+
+.text-gold {
+  background: -webkit-linear-gradient(
+    #9a5916,
+    #e4b04d,
+    #fff1a3,
+    #e7b14f,
+    #ae6f27,
+    #f8c65d
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 html, body {
   height: 100%;
   color: #333333;
   font-family: 'Montserrat', sans-serif;
+  line-height: 1.3;
 }
 
 body {
@@ -20,7 +39,7 @@ main {
 
 .container {
   max-width: 1140px;
-  padding: 90px 20px;
+  padding: 80px 20px;
   margin: 0 auto;
 }
 
@@ -59,7 +78,7 @@ header #nav ul li a:after {
   margin: 5px auto auto auto;
   height: 1px;
   width: 0;
-  background: #0F52BA;
+  background: var(--primary-color);
   transition: all .2s ease;
 }
 
@@ -93,21 +112,10 @@ h1.section-heading {
   font-size: 3rem;
   text-align: center;
   font-family: 'Great Vibes', cursive;
-  background: -webkit-linear-gradient(
-    #9a5916,
-        #e4b04d,
-        #fff1a3,
-        #e7b14f,
-        #ae6f27,
-        #f8c65d
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   text-shadow: none !important;
   filter: drop-shadow(2px 2px #333);
-  padding: 10px 20px 0 0;
   margin-bottom: 0;
+  margin-right: 20px;
   width: 100%;
 }
 
@@ -175,7 +183,7 @@ section {
 }
 
 #details {
-  background: rgb(0, 103, 164); 
+  background: var(--primary-color); 
   color: #fff;
 }
 
@@ -242,7 +250,6 @@ section {
   }
 
   #hero h3 {
-    font-size: 2rem;
     letter-spacing: 10px;
   }
 
