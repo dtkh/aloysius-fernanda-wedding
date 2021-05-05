@@ -230,6 +230,14 @@ section {
   text-align: center;
 }
 
+#schedule-details ul li {
+  padding-bottom: 5px;
+}
+
+#rsvp strong {
+  color: var(--primary-color);
+}
+
 @media screen and (max-width: 424px) {
   header #nav ul li {
     margin: 0 10px;
