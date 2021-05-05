@@ -234,6 +234,17 @@ section {
   padding-bottom: 5px;
 }
 
+#rsvp h3 {
+  flex-grow: 1; 
+  min-height: 40px; 
+  margin-right: 40px; 
+  font-weight: 400; 
+  border-right: 1px solid #ccc; 
+  display: flex; 
+  align-items: center; 
+  justify-content: start;
+}
+
 #rsvp strong {
   color: var(--primary-color);
 }
@@ -249,6 +260,11 @@ section {
 
   #details > .container > div {
     flex-direction: column;
+  }
+
+  #rsvp h3 {
+    margin-right: 20px;
+    font-size: 0.9rem;
   }
 }
 
