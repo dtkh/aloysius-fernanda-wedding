@@ -1,0 +1,93 @@
+header {
+  position: relative;
+}
+
+#rsvp-section {
+  height: 100%;
+  display: block;
+}
+
+#rsvp-section .container {
+  min-width: 320px;
+  max-width: 400px;
+  padding: 0 20px;
+}
+
+#logo > svg {
+  max-width: 120px;
+  min-width: 120px;
+  transition: all .2s ease-in-out;
+}
+
+fieldset {
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+fieldset > legend {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.form {
+  transition: all .2s ease;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 20px 0;
+}
+
+.form-group input {
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #333;
+  transition: all .2s ease;
+}
+
+.form-group input:not([type=checkbox]):focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.form-group.form-checkbox, .form-group.form-radio {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group.form-checkbox:not(:first-child), .form-group.form-radio:not(:first-child) {
+  margin-top: 5px;
+}
+
+.form-group input[type=checkbox], .form-group input[type=radio] {
+  margin-right: 10px;
+}
+
+input[type=submit] {
+  border: 2px solid var(--primary-color);
+  padding: 10px;
+  color: var(--primary-color);
+  background: transparent;
+  width: 100%;
+  transition: all .3s ease;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px #333;
+}
+
+input[type=submit]:hover {
+  background: #ffffff;
+}
+
+textarea {
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  #rsvp-section .container {
+    min-width: 350px;
+  }  
+}

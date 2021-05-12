@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
   TweenLite.defaultEase = Back.easeOut;
 
   tl
-    .to(envLid, 0.4, {
+    .to(envLid, 0.5, {
       scaleY: -1,
       y: 1.5,
     }
     )
-    .fromTo(envPaper, 0.4, {
+    .fromTo(envPaper, 0.5, {
       transformOrigin: "50% 100%",
       scaleY: 0,
     }, {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, -0.09)
 
   window.onscroll = () => {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       document.querySelector('#logo > svg').style.minWidth = '80px';
       document.querySelector('#logo > svg').style.maxWidth = '80px';
     } else {
@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if ( elementIsVisibleInViewport(mailIcon) ) {
       tl.play();
+    } else {
+      tl.reverse();
     }
   }
 });

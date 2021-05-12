@@ -100,7 +100,7 @@ h1.section-heading {
   margin: 0;
 }
 
-#hero {
+#hero, #rsvp-section {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -163,6 +163,20 @@ h1.section-heading {
   background: rgba(255,255,255,0.7);
 }
 
+#milestones {
+  background: url('../img/tile3.png');
+}
+
+#milestones .container {
+  background: #fff;
+  border: 2px solid #000;
+}
+
+#milestones .tiles-spacer {
+  height: 100px;
+  width: 100%;
+}
+
 .gmap-responsive{
   overflow:hidden;
   padding-bottom:56.25%;
@@ -194,7 +208,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('https://www.singaporetravelhub.com/wp-content/uploads/2017/04/Church-of-Saints-Peter-and-Paul-featured.jpg') no-repeat center center fixed;
+  background: url('../img/church-1.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -240,13 +254,11 @@ section {
   margin-right: 40px; 
   font-weight: 400; 
   border-right: 1px solid #ccc; 
-  display: flex; 
-  align-items: center; 
-  justify-content: start;
 }
 
 #rsvp strong {
   color: var(--primary-color);
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 424px) {
