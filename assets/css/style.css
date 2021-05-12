@@ -127,6 +127,7 @@ h1.section-heading {
   text-align: center;
   color: #333;
   font-weight: 400;
+  z-index: 1;
 }
 
 #hero-img {
@@ -154,7 +155,6 @@ h1.section-heading {
 }
 
 #hero-overlay {
-  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
