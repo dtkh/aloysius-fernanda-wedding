@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (mainGuest.others.length) {
             form.setAttribute('data-step', '2');
+            document.querySelector('#rsvp-form input[type="submit"]').value = 'Leggo!';
           } else {
             form.setAttribute('data-step', '3');
           }
@@ -147,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create the fieldset for each guest
             createGuestFieldset(checkbox.getAttribute('data-name'), checkbox.getAttribute('data-phone'));
             form.setAttribute('data-step', '3');
+            
+            document.querySelector('#rsvp-form input[type="submit"]').value = 'Double Confirm!';
           }
         }
 
