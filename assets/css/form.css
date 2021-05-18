@@ -67,22 +67,43 @@ fieldset > legend {
   margin-right: 10px;
 }
 
-input[type=submit] {
-  border: 2px solid var(--primary-color);
-  padding: 10px;
+button:not([type=submit]) {
+  margin: 2px 2px 5px 2px;
+  border: 1px solid var(--primary-color);
   color: var(--primary-color);
+  padding: 10px;
   background: transparent;
-  width: 100%;
   transition: all .3s ease;
   border-radius: 5px;
   box-shadow: 0px 2px 3px #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input[type=submit]:hover {
-  background: #ffffff;
+button {
+  margin: 2px 2px 5px 2px;
+  border: 1px solid #000;
+  padding: 10px;
+  color: #fff;
+  background: var(--primary-color);
+  transition: all .3s ease;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input[type=submit]:focus {
+button[type="submit"]:hover {
+  background: rgba(0, 103, 164, 0.8);
+}
+
+button:not([type="submit"]):hover {
+  background: rgba(255,255,255,0.8);
+}
+
+button:focus {
   outline: 0;
 }
 
@@ -92,7 +113,7 @@ textarea {
 
 #rsvp-form {
   overflow: hidden;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 #rsvp-form > div {
@@ -137,6 +158,10 @@ textarea {
 #rsvp-form[data-step="3"] #form-step-3 {
   transform: translateX(0);
   height: 100%;
+}
+
+#back-btn {
+  visibility: hidden;
 }
 
 @media screen and (min-width: 768px) {
