@@ -191,7 +191,7 @@ h1.section-heading {
 #milestones-hero {
   background: url('../img/moments/image18.jpg') no-repeat center center;
   background-size: cover;
-  height: 450px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,6 +304,12 @@ section {
   }
 }
 
+@media screen and (min-width: 768px) {
+  #milestones-hero {
+    height: 450px;
+  }
+}
+
 @media screen and (min-width: 425px) and (max-width: 767px) {
   #hero h1 {
     font-size: 4rem;
@@ -315,6 +321,10 @@ section {
 
   #details > .container > div {
     flex-direction: column;
+  }
+
+  #milestones-hero {
+    height: 300px;
   }
 }
 
