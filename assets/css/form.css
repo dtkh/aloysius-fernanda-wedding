@@ -8,7 +8,6 @@ header {
 }
 
 #rsvp-section .container {
-  min-width: 320px;
   max-width: 400px;
   padding: 0 20px;
 }
@@ -125,7 +124,7 @@ textarea {
   transform: translateX(0);
 }
 
-#rsvp-form[data-step="1"] #form-step-2, #rsvp-form[data-step="1"] #form-step-3 {
+#rsvp-form[data-step="1"] #form-step-2, #rsvp-form[data-step="1"] #form-step-3, #rsvp-form[data-step="1"] #form-step-4 {
   transform: translateX(100%);
   height: 0;
 }
@@ -140,7 +139,7 @@ textarea {
   height: 0;
 }
 
-#rsvp-form[data-step="2"] #form-step-3 {
+#rsvp-form[data-step="2"] #form-step-3, #rsvp-form[data-step="2"] #form-step-4 {
   transform: translateX(100%);
   height: 0;
 }
@@ -156,6 +155,21 @@ textarea {
 }
 
 #rsvp-form[data-step="3"] #form-step-3 {
+  transform: translateX(0);
+  height: 100%;
+}
+
+#rsvp-form[data-step="3"] #form-step-4 {
+  transform: translateX(100%);
+  height: 0;
+}
+
+#rsvp-form[data-step="4"] #form-step-1, #rsvp-form[data-step="4"] #form-step-2, #rsvp-form[data-step="4"] #form-step-3 {
+  transform: translateX(-100%);
+  height: 0;
+}
+
+#rsvp-form[data-step="4"] #form-step-4 {
   transform: translateX(0);
   height: 100%;
 }

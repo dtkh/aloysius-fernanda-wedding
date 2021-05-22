@@ -3,7 +3,9 @@ const readClient = contentful.createClient({
   accessToken: 'fb766GmKxuX74--YUMfg53WKw5gXhMAiIs86Xbh59fI'
 });
 
-const getEntryVersion = async (entryId) => {
+const getEntryVersion = async (guest) => {
+  const entryId = guest.id;
+
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer CFPAT-OZl2ffWd-A9ak_CJMgkLL5xsfIomeke7Rs_dcbOPmM8");
 
@@ -16,22 +18,36 @@ const getEntryVersion = async (entryId) => {
   let version = await fetch("https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/" + entryId, requestOptions)
     .then(response => response.json())
     .then(result => {
-      return result.sys.version;
+      return {
+        guest: guest,
+        version: result.sys.version
+      }
     });
 
   return version;
 }
 
 const updateEntry = (payload) => {
+  let promises = [];
+
   payload.forEach((guest) => {
-    getEntryVersion(guest.id)
-      .then((version) => {
+    promises.push(getEntryVersion(guest));
+  });
+
+  return Promise.all(promises)
+    .then((responses) => {
+      promises = [];
+
+      responses.forEach((response) => {
+        const version = response.version;
+        const guest = response.guest;
+
         let myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer CFPAT-OZl2ffWd-A9ak_CJMgkLL5xsfIomeke7Rs_dcbOPmM8");
         myHeaders.append("Content-Type", "application/vnd.contentful.management.v1+json");
         myHeaders.append("X-Contentful-Version", version);
 
-        let data = {fields: {}};
+        let data = { fields: {} };
 
         for (const [key, value] of Object.entries(guest)) {
           if (key !== 'id') {
@@ -50,12 +66,14 @@ const updateEntry = (payload) => {
           redirect: 'follow'
         };
 
-        fetch("https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/" + guest.id, requestOptions)
-          .then(response => response.json())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+        promises.push(fetch("https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/" + guest.id, requestOptions));
       });
-  });
+
+      return Promise.all(promises)
+        .then((responses) => {
+          return responses;
+        });
+    });
 }
 
 const createGuestCheckbox = (payload) => {
@@ -280,7 +298,12 @@ document.addEventListener('DOMContentLoaded', () => {
           payload[index].allergies = document.querySelector('#form-step-3 textarea[name="allergies-' + index + '"]').value;
         });
 
-        updateEntry(payload);
+        updateEntry(payload)
+          .then(() => {
+            form.setAttribute('data-step', '4');
+            document.getElementById('back-btn').style.visibility = 'hidden';
+            document.getElementById('submit-btn').style.visibility = 'hidden';
+          });
         break;
     }
   });
