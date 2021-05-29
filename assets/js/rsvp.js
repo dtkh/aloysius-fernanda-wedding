@@ -196,9 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (step === 1) {
       document.getElementById('back-btn').style.visibility = 'hidden';
+      toggleSpinner('Find me!');
       payload = [];
     } else if (step === 2) {
       document.getElementById('form-step-3').innerHTML = '';
+      toggleSpinner('Confirm!');
     }
   });
 
@@ -206,20 +208,20 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     event.stopPropagation();
 
+    toggleSpinner();
+
     switch (form.getAttribute('data-step')) {
       case '1':
         document.getElementById('back-btn').style.visibility = 'hidden';
 
         if (event.target.querySelector('#phone').value) {
-          toggleSpinner();
-
           readClient.getEntries({
             'fields.phone': event.target.querySelector('#phone').value,
             'content_type': 'guest'
           })
             .then((entries) => {
               if (!entries.items.length) {
-                toggleSpinner('Halt! Who goes there?');
+                toggleSpinner('Oops, wrong number?');
               } else {
                 // There should only be one entry due to unique phone number
                 let entry = entries.items[0];
@@ -230,32 +232,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Find other guests in the same group
                 readClient.getEntries({
-                  'fields.group': entry.group,
+                  'fields.group': entry.fields.group,
                   'content_type': 'guest'
                 })
                   .then((entries) => {
-                    if (!entries.items.length) {
-                      // Skip to step 3
-                      form.setAttribute('data-step', '3');
-                    } else {
-                      entries.items.forEach(function (entry) {
-                        if (entry.fields.phone === payload[0].phone) {
-                          return;
-                        } else {
-                          entry.fields.id = entry.sys.id;
-                          payload.push(entry.fields);
-                        }
-                      });
-
-                      for (let el of document.getElementsByClassName('main-guest-name')) {
-                        el.innerHTML = payload[0].name;
+                    entries.items.forEach(function (entry) {
+                      if (entry.fields.phone === payload[0].phone) {
+                        return;
+                      } else {
+                        entry.fields.id = entry.sys.id;
+                        payload.push(entry.fields);
                       }
+                    });
 
-                      createGuestCheckbox(payload);
-                      form.setAttribute('data-step', '2');
-                      document.getElementById('back-btn').style.visibility = 'visible';
-                      toggleSpinner('Leggo!');
+                    for (let el of document.getElementsByClassName('main-guest-name')) {
+                      el.innerHTML = payload[0].name;
                     }
+
+                    createGuestCheckbox(payload);
+                    form.setAttribute('data-step', '2');
+                    document.getElementById('back-btn').style.visibility = 'visible';
+                    toggleSpinner('Confirm!');
                   });
               }
             });
@@ -263,10 +260,10 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
       case '2':
         let checkboxes = document.getElementsByClassName('guests-checkbox');
-        let guests = [];
 
         document.getElementById('form-step-3').innerHTML = '';
 
+        let atLeastOneComing = false;
         for (let checkbox of checkboxes) {
           let index = checkbox.getAttribute('data-index');
 
@@ -274,18 +271,26 @@ document.addEventListener('DOMContentLoaded', () => {
             payload[index].coming = false;
           } else {
             payload[index].coming = true;
+            atLeastOneComing = true;
 
             // Create the fieldset for each guest
             createGuestFieldset(payload[index], index);
-            form.setAttribute('data-step', '3');
-            document.getElementById('back-btn').style.visibility = 'visible';
-
-            toggleSpinner('Double confirm!');
           }
+        }
+
+        if (atLeastOneComing) {
+          form.setAttribute('data-step', '3');
+          toggleSpinner('Double confirm!');
+        } else {
+          updateEntry(payload)
+            .then(() => {
+              form.setAttribute('data-step', '4');
+              document.getElementById('back-btn').style.visibility = 'hidden';
+              document.getElementById('submit-btn').style.visibility = 'hidden';
+            });
         }
         break;
       case '3':
-        toggleSpinner('');
         payload.forEach((guest, index) => {
           if (!guest.coming) {
             return;
