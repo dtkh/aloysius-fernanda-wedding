@@ -66,11 +66,33 @@ const updateEntry = (payload) => {
           redirect: 'follow'
         };
 
-        promises.push(fetch("https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/" + guest.id, requestOptions));
+        promises.push(fetch('https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/' + guest.id, requestOptions));
       });
 
       return Promise.all(promises)
         .then((responses) => {
+
+          // Publish the entries at the background
+          payload.forEach((guest) => {
+            getEntryVersion(guest)
+              .then((response) => {
+                const version = response.version;
+
+                let myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer CFPAT-OZl2ffWd-A9ak_CJMgkLL5xsfIomeke7Rs_dcbOPmM8");
+                myHeaders.append("Content-Type", "application/vnd.contentful.management.v1+json");
+                myHeaders.append("X-Contentful-Version", version);
+
+                let requestOptions = {
+                  method: 'PUT',
+                  headers: myHeaders,
+                  redirect: 'follow'
+                };
+
+                fetch('https://api.contentful.com/spaces/sd5z099u9fvf/environments/master/entries/' + guest.id + '/published', requestOptions);
+              });
+          });
+
           return responses;
         });
     });
@@ -128,6 +150,11 @@ const createGuestFieldset = (guest, index) => {
   inputChicken.setAttribute('value', 'chicken');
   inputChicken.setAttribute('id', 'chicken-' + index);
   inputChicken.setAttribute('required', 'required');
+
+  if (guest.dietaryPreference === 'chicken') {
+    inputChicken.checked = true;
+  }
+
   divChicken.append(inputChicken);
 
   let labelChicken = document.createElement('label');
@@ -146,6 +173,11 @@ const createGuestFieldset = (guest, index) => {
   inputFish.setAttribute('value', 'fish');
   inputFish.setAttribute('id', 'fish-' + index);
   inputFish.setAttribute('required', 'required');
+
+  if (guest.dietaryPreference === 'fish') {
+    inputFish.checked = true;
+  }
+  
   divFish.append(inputFish);
 
   let labelFish = document.createElement('label');
@@ -168,6 +200,11 @@ const createGuestFieldset = (guest, index) => {
   textareaAllergies.setAttribute('col', 3);
   textareaAllergies.setAttribute('name', 'allergies-' + index);
   textareaAllergies.setAttribute('id', 'allergies-' + index);
+  
+  if (guest.allergies) {
+    textareaAllergies.value = guest.allergies;
+  }
+  
   divAllergies.append(textareaAllergies);
 
   fieldset.append(divAllergies);
