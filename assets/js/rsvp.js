@@ -3,6 +3,14 @@ const readClient = contentful.createClient({
   accessToken: 'fb766GmKxuX74--YUMfg53WKw5gXhMAiIs86Xbh59fI'
 });
 
+function splitArrayToChunks(arr, size) {
+  var myArray = [];
+  for (var i = 0; i < arr.length; i += size) {
+    myArray.push(arr.slice(i, i + size));
+  }
+  return myArray;
+}
+
 const getEntryVersion = async (guest) => {
   const entryId = guest.id;
 
@@ -25,6 +33,17 @@ const getEntryVersion = async (guest) => {
     });
 
   return version;
+}
+
+const submitPayload = async (payload) => {
+  const payloadChunks = splitArrayToChunks(payload, 2);
+
+  for (let i = 0; i < payloadChunks.length; i++) {
+    await updateEntry(payloadChunks[i]);
+    setTimeout(() => {}, 1000);
+  }
+
+  return Promise.resolve(true);
 }
 
 const updateEntry = (payload) => {
@@ -177,7 +196,7 @@ const createGuestFieldset = (guest, index) => {
   if (guest.dietaryPreference === 'fish') {
     inputFish.checked = true;
   }
-  
+
   divFish.append(inputFish);
 
   let labelFish = document.createElement('label');
@@ -200,11 +219,11 @@ const createGuestFieldset = (guest, index) => {
   textareaAllergies.setAttribute('col', 3);
   textareaAllergies.setAttribute('name', 'allergies-' + index);
   textareaAllergies.setAttribute('id', 'allergies-' + index);
-  
+
   if (guest.allergies) {
     textareaAllergies.value = guest.allergies;
   }
-  
+
   divAllergies.append(textareaAllergies);
 
   fieldset.append(divAllergies);
@@ -340,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
           payload[index].allergies = document.querySelector('#form-step-3 textarea[name="allergies-' + index + '"]').value;
         });
 
-        updateEntry(payload)
+        submitPayload(payload)
           .then(() => {
             form.setAttribute('data-step', '4');
             document.getElementById('back-btn').style.visibility = 'hidden';
