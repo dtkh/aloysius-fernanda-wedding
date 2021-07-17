@@ -219,6 +219,7 @@ const createGuestFieldset = (guest, index) => {
   textareaAllergies.setAttribute('col', 3);
   textareaAllergies.setAttribute('name', 'allergies-' + index);
   textareaAllergies.setAttribute('id', 'allergies-' + index);
+  textareaAllergies.setAttribute('placeholder', 'Allergies');
 
   if (guest.allergies) {
     textareaAllergies.value = guest.allergies;
