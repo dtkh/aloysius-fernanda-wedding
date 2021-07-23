@@ -335,11 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
+        // No more fish/chicken, skip to end.
+        atLeastOneComing = false;
+
         if (atLeastOneComing) {
           form.setAttribute('data-step', '3');
           toggleSpinner('Double confirm!');
         } else {
-          updateEntry(payload)
+          submitPayload(payload)
             .then(() => {
               form.setAttribute('data-step', '4');
               document.getElementById('back-btn').style.visibility = 'hidden';
