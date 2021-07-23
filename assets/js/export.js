@@ -24,7 +24,7 @@ const exportEntries = async () => {
   })
     .then(response => {
       const entries = response.items;
-      const rows = [['group', 'name', 'phone', 'coming', 'food choice', 'allergies']];
+      const rows = [['group', 'name', 'phone', 'coming', 'food choice', 'allergies', 'created_timestamp', 'updated_timestamp']];
 
       for (let entry of entries) {
         let coming = 'no';
@@ -32,7 +32,7 @@ const exportEntries = async () => {
           coming = 'yes';
         }
 
-        rows.push([entry.fields.group, entry.fields.name, entry.fields.phone, coming, entry.fields.dietaryPreference, entry.fields.allergies]);
+        rows.push([entry.fields.group, entry.fields.name, entry.fields.phone, coming, entry.fields.dietaryPreference, entry.fields.allergies, entry.sys.createdAt, entry.sys.updatedAt]);
       }
 
       let csvContent = "data:text/csv;charset=utf-8,"
